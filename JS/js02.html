@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS 02</title>
+  </head>
+  <body>
+    <h1></h1>
+    <h2></h2>
+    <h3></h3>
+    <button style="margin-top: 24px">Xem ngày giờ</button>
+    <script>
+      const month_input = parseInt(prompt("Nhập tháng"));
+      const year_input = parseInt(prompt("Nhập năm"));
+
+      const $ = document.querySelector.bind(document);
+      const h1Tag = $("h1");
+      const h2Tag = $("h2");
+      const h3Tag = $("h3");
+      const button = $("button");
+
+      const isNhuan =
+        month_input === 2 &&
+        (year_input % 400 === 0 ||
+          (year_input % 4 === 0 && year_input % 100 !== 0))
+          ? true
+          : false;
+      const dateOfMonth = [4, 6, 9, 11].includes(month_input)
+        ? 30
+        : month_input == 2 && isNhuan
+        ? 29
+        : month_input == 2 && !isNhuan
+        ? 28
+        : 31;
+      h1Tag.innerHTML = `Tháng ${month_input} năm ${year_input} có ${dateOfMonth} ngày`;
+      button.onclick = () => {
+        date_ = new Date();
+        const day = date_.getDay();
+        const year = date_.getFullYear();
+        const month = date_.getMonth();
+        const date = date_.getDate();
+
+        h2Tag.innerHTML = `Hôm nay là thứ ${
+          day != 0 ? day + 1 : "chủ nhật "
+        } ngày ${date}/${month + 1}/${year}  `;
+
+        h3Tag.innerHTML = `${date_.getHours()}:${date_.getMinutes()}:${date_.getSeconds()}`;
+      };
+    </script>
+  </body>
+</html>

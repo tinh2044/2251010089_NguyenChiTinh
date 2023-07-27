@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS 01</title>
+    <style>
+      form > div {
+        border: 1px solid black;
+        padding: 1px;
+        width: 58%;
+        margin: 2px;
+        display: flex;
+        justify-content: space-between;
+      }
+      div > label {
+        display: inline-block;
+        padding: 0 4px;
+        border: 0.5px solid black;
+        width: 50%;
+        margin: 0 2px;
+      }
+      div > input {
+        margin-right: 24px;
+      }
+      button {
+        margin-top: 24px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Chương trình tính tuổi</h1>
+    <form action="">
+      <div>
+        <label for="name"> Nhập vào tên của bạn: </label>
+        <input id="name" type="text" />
+      </div>
+      <div>
+        <label for="year"> Nhập vào năm sinh: </label>
+        <input id="year" type="text" />
+      </div>
+
+      <button type="button">Tính tuổi</button>
+    </form>
+    <p class="name">Chào bạn Tình!</p>
+    <p class="age">Tuổi của bạn là 18</p>
+
+    <script>
+      const $ = document.querySelector.bind(document);
+      const button = $("button");
+
+      button.onclick = () => {
+        const name_input = $("#name").value;
+        const year_input = parseInt($("#year").value);
+        const date = new Date();
+        $(".name").innerHTML = `Chào bạn ${name_input}`;
+        $(".age").innerHTML = `Tuổi của bạn là ${
+          date.getFullYear() - year_input
+        }`;
+      };
+    </script>
+  </body>
+</html>
